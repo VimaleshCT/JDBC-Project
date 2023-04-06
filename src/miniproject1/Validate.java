@@ -35,29 +35,4 @@ public class  Validate extends Register {
 		}
 		
 		
-//		public static void Register() {
-//			
-//			String Username = "";
-//			String Password = "";
-//			
-//			try
-//			{
-//				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sinngle", "root", "2021239025");
-//				
-//				PreparedStatement stmt = con.prepareStatement("INSERT INTO  mipro(Username, Password) VALUES (?, ?)");
-//				
-//				stmt.setString(1, Username);
-//				stmt.setString(2, encrypt(Password, algorithm));
-//				
-//				
-//				int count = stmt.executeUpdate();
-//				
-//				System.out.println(count);
-//				
-//				con.close();
-//			}
-//			catch (Exception e) {
-//				System.out.println(e);
-//			}
-//		}
 	} 
