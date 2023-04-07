@@ -5,15 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-public class main {
+public class View {
 
 	static Connection con ;
 	static PreparedStatement stmt;
+	static boolean flag = false;
 	
  public static void main(String[] args) {
 	 int n;
 	 
-	 Scanner in = new Scanner(System.in);
+	 @SuppressWarnings("resource")
+	Scanner in = new Scanner(System.in);
 	 do {
 		 System.out.println("\n1.Register \n2.Login");
 	     System.out.println("enter ur choice:");
@@ -24,9 +26,9 @@ public class main {
 	    	  switch(n) {
 	 		 
 	        	case 1:
-	        	    String username = in.nextLine();
+	        	    String regUsername = in.nextLine();
 	        	    System.out.println("Enter User name :");
-	        	    username = in.nextLine();
+	        	    regUsername = in.nextLine();
 	        		
 	        		
 	         		
@@ -37,20 +39,36 @@ public class main {
 	         		String Email_id = in.nextLine();
 	         		
 	               
-	         		Register r =  new Register(username, Password, Email_id);
-	         		if(r.Valid())
+	         		Register r =  new Register(regUsername, Password, Email_id);
+	         		if(Register.Valid())
 	         	
 	         		{
-	         			r.login();
+	         			Register.reg();
 	         		}
 	         		
-	         		
+	         		flag = true;
 	         		break;
 	        	    
 	                
 	        	   
 	        	case 2:
-	        	   // login();
+	        		    String logUsername = in.nextLine();
+		        	    System.out.println("Enter User name :");
+		        	    logUsername = in.nextLine();
+		        		
+		        		
+		         		
+		        	    System.out.println("Enter Password :");
+		         	    String password = in.nextLine();
+		         		
+	        		login l =  new login(logUsername, password);
+	        		if(login.Valid())
+	    	         	
+	         		{
+	         			login.log();
+	         		}
+	         		
+	        		flag = true;
 	        		break;
 	        	
 	        		
@@ -65,7 +83,7 @@ public class main {
 		 
         
         		
- }while(true);
+ }while(!flag);
 		
 	 }    
 

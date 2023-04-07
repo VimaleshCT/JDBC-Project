@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class Register extends main {
+public class Register extends View {
 	
 	static  String Username ;
     static	String Password;
@@ -28,8 +28,11 @@ public class Register extends main {
 	public static boolean Valid() {
 		 String pattern1 = "[a-z0-9_]{5,20}";
 		 String pattern2 = "[a-zA-Z0-9_@!#$%]{5,20}";
+		 String pattern3 = "[a-zA-Z0-9_@!.]{5,20}";
 		 
-		 if(Pattern.matches(pattern1,Username) & Pattern.matches(pattern2,Password)) {
+		 
+		 if(Pattern.matches(pattern1,Username) & Pattern.matches(pattern2,Password)& Pattern.matches(pattern3,Email_id
+				 )) {
 			 System.out.println("Valid !");
 			 return true;
 			 
@@ -42,7 +45,7 @@ public class Register extends main {
 		 }
 	
 
-     public static void login() {
+     public static void reg() {
 				
 			try
 				{
