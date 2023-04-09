@@ -9,7 +9,7 @@ public class View {
 
 	static Connection con ;
 	static PreparedStatement stmt;
-	static boolean flag = false;
+    
 	
  public static void main(String[] args) {
 	 int n;
@@ -32,7 +32,9 @@ public class View {
 	        		
 	        		
 	         		
-	        	    System.out.println("Enter Password :");
+	        	   
+	        	 
+	        	   System.out.println("Enter Password :");
 	         	    String Password = in.nextLine();
 	         		
 	        		System.out.println("Enter Email_id :");
@@ -40,13 +42,13 @@ public class View {
 	         		
 	               
 	         		Register r =  new Register(regUsername, Password, Email_id);
-	         		if(Register.Valid())
+	         		if(Register.Valid()&&Register.passvalid(Password)&& Register.emailval(Email_id))
 	         	
 	         		{
 	         			Register.reg();
 	         		}
 	         		
-	         		flag = true;
+	         	
 	         		break;
 	        	    
 	                
@@ -68,10 +70,12 @@ public class View {
 	         			login.log();
 	         		}
 	         		
-	        		flag = true;
+	        		
 	        		break;
 	        	
-	        		
+	        	case 3:
+	        		break;
+	        	
 	        	default:
 	        		System.out.println("\n invalid choice");
 	        		break;
@@ -83,7 +87,7 @@ public class View {
 		 
         
         		
- }while(!flag);
+ }while(n!=3);
 		
 	 }    
 

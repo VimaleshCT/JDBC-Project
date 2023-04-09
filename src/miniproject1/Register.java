@@ -27,21 +27,43 @@ public class Register extends View {
 
 	public static boolean Valid() {
 		 String pattern1 = "[a-z0-9_]{5,20}";
-		 String pattern2 = "[a-zA-Z0-9_@!#$%]{5,20}";
-		 String pattern3 = "[a-zA-Z0-9_@!.]{5,20}";
 		 
 		 
-		 if(Pattern.matches(pattern1,Username) & Pattern.matches(pattern2,Password)& Pattern.matches(pattern3,Email_id
-				 )) {
-			 System.out.println("Valid !");
+		 
+		 if(Pattern.matches(pattern1,Username))
+				 {
+			 System.out.println("Valid uname !");
+			 return true;
+			 
+		 }else
+			 return false;
+	}
+		 public static boolean passvalid(String password)
+		 {
+			 
+		 
+		 String pattern2 = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[_@!#$%]).{5,20}";
+		 
+	   	
+		 if(Pattern.matches(pattern2,Password)) {
+			 System.out.println("Valid Password !");
 			 return true;
 			 
 		 }else {
-			 System.out.println("invalid");
-			 return false;
-		 	
-		
-	   	}
+			 System.out.println("invalid Password");
+			 return false; 
+		 }
+		 }
+		 public static boolean emailval(String Email_id) {
+			 String pattern3 = "((?=.*[a-z])|(?=.*[0-9]))(?=.*[@.]).{4,}";
+			if(Pattern.matches(pattern3, Email_id)) {
+					System.out.println("Valid Email !");
+			 return true;
+			 
+		 }else {
+			 System.out.println("invalid Email");
+			 return false; 
+		 }
 		 }
 	
 
@@ -50,7 +72,7 @@ public class Register extends View {
 			try
 				{
 					
-					stmt = con.prepareStatement("INSERT INTO mipro(Username, Password,Email_id) VALUES (?, ?,?)");
+					stmt = con.prepareStatement("INSERT INTO mp(Username, Password,Email_id) VALUES (?, ?,?)");
 					String enc = Validate.encrypt(Password);
 					stmt.setString(1, Username);
 					stmt.setString(2, enc);

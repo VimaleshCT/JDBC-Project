@@ -24,22 +24,17 @@ public class  Validate{
 
 		public static String encrypt(String input) {
 			try {
-//				System.out.println("hi");
+
 				MessageDigest md = MessageDigest.getInstance("MD5");
 				
 				byte[] messageDigest = md.digest(input.getBytes());
-//				System.out.println(messageDigest);
+
 				
 				BigInteger no = new BigInteger(1, messageDigest);
-//				System.out.println(no);
+
 				
 				String hashtext = no.toString(16);
-//				System.out.println(hashtext);
-//				while(hashtext.length() < 32) { 
-//					System.out.println("hello");
-//					hashtext = "0" + hashtext;
-//				}
-//				System.out.println(hashtext);
+			
 				return hashtext;
 			}
 			catch(NoSuchAlgorithmException e) {

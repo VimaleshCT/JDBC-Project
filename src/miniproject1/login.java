@@ -14,20 +14,19 @@ public class login extends View {
 		
 			User = Username;
 			Pass = Password;
-//			System.out.println("helloo");
+
 			
 			
 	}
 	
 	
 	public static boolean Valid(){
-//		System.out.println("success");
+
+
 		 String pattern1 = "[a-z0-9_]{5,20}";
-		 String pattern2 = "[a-zA-Z0-9_@!#$%]{5,20}";
-//		 System.out.println(Pattern.matches(pattern1,Username));
-//		 System.out.println(Pattern.matches(pattern1,User) & Pattern.matches(pattern2,Pass));
-//		 System.out.println("okay");
-		 if(Pattern.matches(pattern1,User) & Pattern.matches(pattern2,Pass)) {
+		 String pattern2 = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[_@!#$%]).{5,20}";
+
+		 if(Pattern.matches(pattern1,User) && Pattern.matches(pattern2,Pass)) {
 			 System.out.println("Valid !");
 			 return true;
 			 
@@ -45,7 +44,7 @@ public class login extends View {
 		try
 		{
 			
-			stmt = con.prepareStatement("SELECT Username,Password FROM mipro WHERE Username=? AND Password=?");
+			stmt = con.prepareStatement("SELECT Username,Password FROM mp WHERE Username=? AND Password=?");
 			
 			String enc = Validate.encrypt(Pass);
 			stmt.setString(1, User);
